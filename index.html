@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Folding Eco-Friendly Bag - FashionStore.id</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B6B',
+                        secondary: '#4ECDC4',
+                        accent: '#FFD166',
+                        dark: '#1A1A2E',
+                        light: '#F7F7F7'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        
+        .header-shadow {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .product-image {
+            transition: transform 0.3s ease;
+        }
+        
+        .product-image:hover {
+            transform: scale(1.03);
+        }
+        
+        .color-option {
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .color-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .color-option.active {
+            border: 2px solid #FF6B6B;
+            box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.3);
+        }
+        
+        .testimonials .swiper-slide {
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonials .swiper-slide.swiper-slide-active {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        
+        .price-strike {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .price-strike::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #FF6B6B;
+            transform: rotate(-15deg);
+        }
+        
+        .countdown-timer {
+            background: linear-gradient(135deg, #FF6B6B, #FF8E00);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 107, 107, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+            }
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: none;
+            animation: slideIn 0.5s, fadeOut 0.5s 2.5s;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .modal-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            border-color: #FF6B6B;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #FF6B6B, #FF8E00);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.6);
+        }
+        
+        .badge {
+            background: linear-gradient(135deg, #4ECDC4, #1A1A2E);
+        }
+        
+        .scarcity-bar {
+            height: 8px;
+            background: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .scarcity-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FF6B6B, #FF8E00);
+            border-radius: 4px;
+            width: 23%;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+    <!-- Header -->
+    <header class="bg-white py-4 px-4 md:px-8 header-shadow sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://scontent.fsub8-2.fna.fbcdn.net/v/t39.30808-6/340280384_202238192515306_1857026655624969742_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=wPGBwtjhLmkQ7kNvwFWarC0&_nc_oc=Adk584KJdEBQGIsCO-5NDzP6Dj2l-9eha2E5J1jq8wHFIDjogj2LjXZVdFL4MqkhE5c&_nc_zt=23&_nc_ht=scontent.fsub8-2.fna&_nc_gid=zH8mcyyDT5rlH_nU3-kJcw&oh=00_AfXpfEPotZxf43a8MIirU7aRrY3NWxXt4DRHrox7ZRuYqg&oe=68B2295E" alt="FashionStore.id Logo" class="h-12 w-12 rounded-full">
+                <h1 class="ml-3 text-xl md:text-2xl font-bold text-dark">FashionStore.id</h1>
+            </div>
+            <div class="hidden md:flex items-center space-x-4">
+                <span class="text-sm font-medium">Gratis Ongkir Hari Ini!</span>
+                <a href="#order" class="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-red-600 transition">BELI SEKARANG</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-8 md:py-16 bg-gradient-to-br from-light to-secondary/10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-3xl md:text-5xl font-bold text-dark mb-4">Folding Eco-Friendly Bag</h1>
+                    <p class="text-xl text-primary font-semibold mb-6">Tas Lipat Ramah Lingkungan yang Praktis dan Stylish</p>
+                    
+                    <div class="mb-6">
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="ml-2 font-medium">4.9 (1,248 reviews)</span>
+                        </div>
+                        <p class="text-gray-600">Dipercaya oleh ribuan pelanggan FashionStore.id</p>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <div class="flex items-center mb-2">
+                            <span class="text-2xl font-bold text-primary">Rp 145.000</span>
+                            <span class="ml-3 text-gray-500 line-through">Rp 217.500</span>
+                            <span class="ml-3 bg-red-100 text-red-700 px-2 py-1 rounded text-sm font-bold">-33%</span>
+                        </div>
+                        <p class="text-gray-600">Harga spesial hari ini! Beli 2 Gratis 1</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-truck text-primary mr-2"></i>
+                            <span class="font-medium">Gratis Ongkir Seluruh Indonesia</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-shield-alt text-primary mr-2"></i>
+                            <span>Garansi 30 Hari Pengembalian</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="scarcity-bar mb-2">
+                            <div class="scarcity-fill"></div>
+                        </div>
+                        <p class="text-red-600 font-medium">Hanya 23 lagi yang tersedia!</p>
+                    </div>
+                    
+                    <a href="#order" class="cta-button text-white font-bold py-4 px-8 rounded-full text-center block md:inline-block text-lg">
+                        BELI SEKARANG JUGA
+                    </a>
+                    <p class="text-center mt-3 text-sm">KHUSUS PEMBAYARAN TF HARI INI DAPAT GRATIS ONGKIR</p>
+                </div>
+                
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <img src="https://cdn.orderonline.id/uploads/images_6717561756122431888.gif" alt="Folding Eco-Friendly Bag" class="rounded-2xl shadow-xl w-full max-w-2xl">
+                        <div class="absolute -bottom-4 -right-4 bg-white rounded-full p-4 shadow-lg">
+                            <i class="fas fa-recycle text-3xl text-primary"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Timer -->
+    <section class="py-6 bg-primary text-white text-center">
+        <div class="container mx-auto px-4">
+            <p class="font-bold text-lg mb-2">PROMO BERAKHIR DALAM:</p>
+            <div class="countdown-timer inline-flex rounded-lg overflow-hidden">
+                <div class="bg-white/20 px-4 py-2">
+                    <span class="text-2xl font-bold" id="hours">24</span>
+                    <span class="block text-sm">Jam</span>
+                </div>
+                <div class="bg-white/20 px-4 py-2">
+                    <span class="text-2xl font-bold" id="minutes">00</span>
+                    <span class="block text-sm">Menit</span>
+                </div>
+                <div class="bg-white/20 px-4 py-2">
+                    <span class="text-2xl font-bold" id="seconds">00</span>
+                    <span class="block text-sm">Detik</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem & Solution -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-dark mb-4">Masalah yang Sering Anda Hadapi</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Tas belanja yang tidak ramah lingkungan, sulit dibawa kemana-mana, dan tidak stylish</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center mb-12">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <div class="bg-red-50 p-8 rounded-2xl shadow-sm">
+                        <h3 class="text-xl font-bold text-red-600 mb-4">Masalah Umum:</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-times-circle text-red-500 mt-1 mr-3"></i>
+                                <span>Tas plastik yang tidak ramah lingkungan</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-times-circle text-red-500 mt-1 mr-3"></i>
+                                <span>Tas yang tidak bisa dilipat dan memakan tempat</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-times-circle text-red-500 mt-1 mr-3"></i>
+                                <span>Tas yang tidak stylish dan tidak cocok untuk fashionista</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-times-circle text-red-500 mt-1 mr-3"></i>
+                                <span>Tas yang mudah robek dan tidak tahan lama</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 md:pl-8">
+                    <div class="bg-green-50 p-8 rounded-2xl shadow-sm">
+                        <h3 class="text-xl font-bold text-green-600 mb-4">Solusi Kami:</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span>Material 100% ramah lingkungan dan dapat didaur ulang</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span>Design lipat praktis yang bisa dibawa kemana saja</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span>Design fashion modern yang stylish dan trendy</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span>Kualitas premium yang tahan lama dan kuat</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="py-12 bg-light">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-dark mb-4">Fitur Utama Produk</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Folding Eco-Friendly Bag dirancang untuk memberikan solusi terbaik untuk kebutuhan fashion dan lingkungan Anda</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="feature-card bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                        <i class="fas fa-recycle text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Material Ramah Lingkungan</h3>
+                    <p class="text-gray-600">Terbuat dari material daur ulang yang 100% ramah lingkungan dan dapat didaur ulang</p>
+                </div>
+                
+                <div class="feature-card bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
+                        <i class="fas fa-compress text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Design Lipat Praktis</h3>
+                    <p class="text-gray-600">Dapat dilipat menjadi ukuran kecil dan mudah dibawa kemana saja</p>
+                </div>
+                
+                <div class="feature-card bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-4">
+                        <i class="fas fa-tint text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Waterproof</h3>
+                    <p class="text-gray-600">Tahan air sehingga melindungi barang-barang Anda dari hujan</p>
+                </div>
+                
+                <div class="feature-card bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                        <i class="fas fa-expand text-primary text-2xl"></i>
+i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Kapasitas Besar</h3>
+                    <p class="text-gray-600">Dapat menampung hingga 10kg barang dengan kapasitas yang besar</p>
+                </div>
+                
+                <div class="feature-card bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
+                        <i class="fas fa-palette text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Design Fashionable</h3>
+                    <p class="text-gray-600">Berbagai pilihan warna dan pattern yang stylish dan trendy</p>
+                </div>
+                
+                <div class="feature-card bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-4">
+                        <i class="fas fa-shield-alt text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Garansi 30 Hari</h3>
+                    <p class="text-gray-600">Garansi 30 hari untuk pengembalian dana jika tidak puas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Gallery -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-dark mb-4">Galeri Produk</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Lihat bagaimana Folding Eco-Friendly Bag digunakan dalam kehidupan sehari-hari</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="gallery-item cursor-pointer" onclick="openModal('https://cdn.wshopon.com/image/5d41d4659103c150eacc9a8be49b7719a230a3d8-800.jpeg')">
+                    <img src="https://cdn.wshopon.com/image/5d41d4659103c150eacc9a8be49b7719a230a3d8-800.jpeg" alt="Folding Bag" class="rounded-xl shadow-md w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item cursor-pointer" onclick="openModal('https://cdn.wshopon.com/image/b244eca1e8a0e81aa2531a2854d0c6c3a878eb0e-800.jpeg')">
+                    <img src="https://cdn.wshopon.com/image/b244eca1e8a0e81aa2531a2854d0c6c3a878eb0e-800.jpeg" alt="Folding Bag" class="rounded-xl shadow-md w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item cursor-pointer" onclick="openModal('https://cdn.wshopon.com/image/9fb74d309337fc693fcaef5e8e06ebb6264427ce-800.jpeg')">
+                    <img src="https://cdn.wshopon.com/image/9fb74d309337fc693fcaef5e8e06ebb6264427ce-800.jpeg" alt="Folding Bag" class="rounded-xl shadow-md w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item cursor-pointer" onclick="openModal('https://cdn.wshopon.com/image/60d0a1d30cb455bb02be62debc009f0692fc40c3-800.jpeg')">
+                    <img src="https://cdn.wshopon.com/image/60d0a1d30cb455bb02be62debc009f0692fc40c3-800.jpeg" alt="Folding Bag" class="rounded-xl shadow-md w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item cursor-pointer" onclick="openModal('https://cdn.wshopon.com/image/1c3fcf69e756dafb5fb181f046fa48634c82e4b4-800.jpeg')">
+                    <img src="https://cdn.wshopon.com/image/1c3fcf69e756dafb5fb181f046fa48634c82e4b4-800.jpeg" alt="Folding Bag" class="rounded-xl shadow-md w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item cursor-pointer" onclick="openModal('https://down-id.img.susercontent.com/file/id-11134207-7rbk5-m7djquottkucfc@resize_w450_nl.webp')">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7rbk5-m7djquottkucfc@resize_w450_nl.webp" alt="Folding Bag" class="rounded-xl shadow-md w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item cursor-pointer" onclick="openModal('https://down-id.img.susercontent.com/file/id-11134207-7qul6-lgvnont0l2hm68@resize_w450_nl.webp')">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7qul6-lgvnont0l2hm68@resize_w450_nl.webp" alt="Folding Bag" class="rounded-xl shadow-md w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item cursor-pointer" onclick="openModal('https://down-id.img.susercontent.com/file/id-11134207-7r98s-lozlg1gh2t1q35@resize_w450_nl.webp')">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98s-lozlg1gh2t1q35@resize_w450_nl.webp" alt="Folding Bag" class="rounded-xl shadow-md w-full h-64 object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Color Options -->
+    <section class="py-12 bg-light">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-dark mb-4">Pilihan Warna</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Pilih warna favorit Anda yang sesuai dengan style fashion Anda</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+                <div class="color-option bg-white p-4 rounded-xl text-center shadow-sm active">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7rbk5-m7djquottkucfc@resize_w450_nl.webp" alt="Pink Army" class="mx-auto mb-3 rounded-lg w-24 h-24 object-cover">
+                    <h3 class="font-bold">PINK ARMY</h3>
+                </div>
+                
+                <div class="color-option bg-white p-4 rounded-xl text-center shadow-sm">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7qul6-lgvnont0l2hm68@resize_w450_nl.webp" alt="Block Diagram" class="mx-auto mb-3 rounded-lg w-24 h-24 object-cover">
+                    <h3 class="font-bold">BLOCK DIAGRAM</h3>
+                </div>
+                
+                <div class="color-option bg-white p-4 rounded-xl text-center shadow-sm">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98s-lozlg1gh2t1q35@resize_w450_nl.webp" alt="Diamond" class="mx-auto mb-3 rounded-lg w-24 h-24 object-cover">
+                    <h3 class="font-bold">DIAMOND</h3>
+                </div>
+                
+                <div class="color-option bg-white p-4 rounded-xl text-center shadow-sm">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r991-lncdn6lc18cpb0@resize_w450_nl.webp" alt="Wortel" class="mx-auto mb-3 rounded-lg w-24 h-24 object-cover">
+                    <h3 class="font-bold">WORTEL</h3>
+                </div>
+                
+                <div class="color-option bg-white p-4 rounded-xl text-center shadow-sm">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98t-lncdn6lbyf7tcf@resize_w450_nl.webp" alt="U U U" class="mx-auto mb-3 rounded-lg w-24 h-24 object-cover">
+                    <h3 class="font-bold">U U U</h3>
+                </div>
+                
+                <div class="color-option bg-white p-4 rounded-xl text-center shadow-sm">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98z-lncdn6lbzts93a@resize_w450_nl.webp" alt="Bear Flower" class="mx-auto mb-3 rounded-lg w-24 h-24 object-cover">
+                    <h3 class="font-bold">BEAR FLOWER</h3>
+                </div>
+                
+                <div class="color-option bg-white p-4 rounded-xl text-center shadow-sm">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7rbk4-m7djquots69wb3@resize_w450_nl.webp" alt="Black Leopard" class="mx-auto mb-3 rounded-lg w-24 h-24 object-cover">
+                    <h3 class="font-bold">BLACK LEOPARD</h3>
+                </div>
+                
+                <div class="color-option bg-white p-4 rounded-xl text-center shadow-sm">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7rbkb-m7djquotuzesde@resize_w450_nl.webp" alt="Black" class="mx-auto mb-3 rounded-lg w-24 h-24 object-cover">
+                    <h3 class="font-bold">BLACK</h3>
+                </div>
+                
+                <div class="color-option bg-white p-4 rounded-xl text-center shadow-sm">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7quky-lgvnont0e1ne31@resize_w450_nl.webp" alt="Dongker" class="mx-auto mb-3 rounded-lg w-24 h-24 object-cover">
+                    <h3 class="font-bold">DONGKER</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-dark mb-4">Apa Kata Pelanggan Kami</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Ulasan nyata dari pelanggan FashionStore.id yang telah menggunakan Folding Eco-Friendly Bag</p>
+            </div>
+            
+            <div class="testimonials swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide bg-light p-8 rounded-2xl shadow-sm">
+                        <div class="flex text-yellow-400 mb-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 mb-6 italic">"Tas ini benar-benar luar biasa! Ringan, bisa dilipat, dan sangat stylish. Saya selalu membawanya ke mana saja. Materialnya juga ramah lingkungan, jadi saya merasa berkontribusi untuk lingkungan."</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold mr-4">
+                                S
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Siti - Mahasiswa</h4>
+                                <p class="text-gray-600 text-sm">Jakarta</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide bg-light p-8 rounded-2xl shadow-sm">
+                        <div class="flex text-yellow-400 mb-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 mb-6 italic">"Saya suka sekali dengan designnya yang fashionable. Tas ini cocok untuk semua usia dan sangat praktis. Saya bisa membawa tas ini ke mana saja tanpa memakan tempat. Kualitasnya juga sangat bagus!"</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary font-bold mr-4">
+                                M
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Maya - Ibu Rumah Tangga</h4>
+                                <p class="text-gray-600 text-sm">Bandung</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide bg-light p-8 rounded-2xl shadow-sm">
+                        <div class="flex text-yellow-400 mb-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 mb-6 italic">"Tas ini sangat kuat dan tahan lama. Saya sudah menggunakan tas ini selama 6 bulan dan masih dalam kondisi sangat baik. Designnya juga trendy dan cocok untuk semua outfit saya. Highly recommended!"</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent font-bold mr-4">
+                                D
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Dewi - Fashion Designer</h4>
+                                <p class="text-gray-600 text-sm">Yogyakarta</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide bg-light p-8 rounded-2xl shadow-sm">
+                        <div class="flex text-yellow-400 mb-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 mb-6 italic">"Saya sangat senang dengan pelayanan FashionStore.id. Tas yang saya pesan datang tepat waktu dan dalam kondisi sangat baik. Tas ini juga sangat praktis dan stylish. Saya akan membeli lagi untuk koleksi warna lainnya!"</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold mr-4">
+                                A
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Anita - Entrepreneur</h4>
+                                <p class="text-gray-600 text-sm">Surabaya</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="swiper-pagination mt-8"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Urgency & Scarcity -->
+    <section class="py-12 bg-gradient-to-r from-primary to-secondary">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Jangan Lewatkan Kesempatan Ini!</h2>
+            <p class="text-white text-xl mb-8">Promo spesial hari ini hanya berlaku untuk 100 pembeli pertama</p>
+            
+            <div class="bg-white/20 backdrop-blur-sm rounded-2xl p-8 max-w-3xl mx-auto mb-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-6 md:mb-0">
+                        <p class="text-white font-bold text-2xl">Stok Terbatas!</p>
+                        <p class="text-white">Hanya 23 tas yang tersisa</p>
+                    </div>
+                    
+                    <div class="scarcity-bar w-64 h-6 bg-white/30 rounded-full overflow-hidden mb-4 md:mb-0">
+                        <div class="scarcity-fill w-1/4 h-full bg-white"></div>
+                    </div>
+                    
+                    <div class="text-white">
+                        <p class="font-bold">23/100 tersisa</p>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="text-white text-lg">Promo ini akan berakhir dalam:</p>
+            <div class="countdown-timer inline-flex rounded-lg overflow-hidden mt-4">
+                <div class="bg-white/20 px-4 py-2">
+                    <span class="text-2xl font-bold text-white" id="hours2">24</span>
+                    <span class="block text-sm text-white">Jam</span>
+                </div>
+                <div class="bg-white/20 px-4 py-2">
+                    <span class="text-2xl font-bold text-white" id="minutes2">00</span>
+                    <span class="block text-sm text-white">Menit</span>
+                </div>
+                <div class="bg-white/20 px-4 py-2">
+                    <span class="text-2xl font-bold text-white" id="seconds2">00</span>
+                    <span class="block text-sm text-white">Detik</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Section -->
+    <section id="order" class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-dark mb-4">Order Sekarang Juga!</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Jangan lewatkan kesempatan untuk memiliki Folding Eco-Friendly Bag dengan harga spesial</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto bg-light rounded-2xl shadow-lg p-8">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                        <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+                            <h3 class="text-xl font-bold mb-4">Harga Spesial Hari Ini</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="border-2 border-primary rounded-xl p-4 text-center">
+                                    <h4 class="font-bold text-lg mb-2">1 PCS</h4>
+                                    <p class="text-2xl font-bold text-primary mb-2">Rp 145.000</p>
+                                    <p class="text-gray-600 text-sm">Harga Normal: <span class="line-through">Rp 217.500</span></p>
+                                    <span class="inline-block mt-2 bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs font-bold">-33%</span>
+                                </div>
+                                <div class="border-2 border-secondary rounded-xl p-4 text-center">
+                                    <h4 class="font-bold text-lg mb-2">Beli 2 Gratis 1</h4>
+                                    <p class="text-2xl font-bold text-secondary mb-2">Rp 199.000</p>
+                                    <p class="text-gray-600 text-sm">(3 PCS)</p>
+                                    <span class="inline-block mt-2 bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs font-bold">PROMO</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl shadow-sm p-6">
+                            <h3 class="text-xl font-bold mb-4">Bonus Spesial</h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-gift text-primary mt-1 mr-3"></i>
+                                    <span>Gratis e-book "Tips Fashion Sustainable" senilai Rp 50.000</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-gift text-primary mt-1 mr-3"></i>
+                                    <span>Gratis ongkir seluruh Indonesia</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-gift text-primary mt-1 mr-3"></i>
+                                    <span>Garansi 30 hari pengembalian dana</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-1/2 md:pl-8">
+                        <div class="bg-white rounded-xl shadow-sm p-6">
+                            <h3 class="text-xl font-bold mb-4">Form Pemesanan</h3>
+                            <div class="ooef">
+                                <form class="orderonline-embed-form" data-username="elsa" data-product-slug="folding-eco-friendly-bag" data-product-id="68ac49d54cb9d65a52084cac" id="oo-embed-form-folding-eco-friendly-bag-8908" data-origin="orderonline">
+                                    <div class="ooef-loader">
+                                        <style>
+                                            .ooef-loader{visibility: hidden;opacity: 0;position: absolute;left: 0;right: 0;top: 0;bottom: 0;display: flex;justify-content: center;align-items: center;flex-direction: column;animation: ooLoadingIn 10s ease;-webkit-animation: ooLoadingIn 10s ease;animation-fill-mode: forwards;overflow: hidden}
+                                            @keyframes ooLoadingIn{0%{visibility: hidden;opacity: 0}20%{visibility: visible;opacity: 0}100%{visibility: visible;opacity: 1}}
+                                            @-webkit-keyframes ooLoadingIn{0%{visibility: hidden;opacity: 0}20%{visibility: visible;opacity: 0}100%{visibility: visible;opacity: 1}}
+                                            .ooef-loader>div,.ooef-loader>div:after{border-radius: 50%;width: 2.5rem;height: 2.5rem}
+                                            .ooef-loader>div{font-size: 10px;position: relative;text-indent: -9999em;border: .25rem solid #f5f5f5;border-left: .25rem solid #55c4cf;-webkit-transform: translateZ(0);-ms-transform: translateZ(0);transform: translateZ(0);-webkit-animation: ooLoading 1.1s infinite linear;animation: ooLoading 1.1s infinite linear}
+                                            .ooef-loader.error>div{border-left: .25rem solid #ff4500;animation-duration: 5s}
+                                            @-webkit-keyframes ooLoading{0%{-webkit-transform: rotate(0);transform: rotate(0)}100%{-webkit-transform: rotate(360deg);transform: rotate(360deg)}}
+                                            @keyframes ooLoading{0%{-webkit-transform: rotate(0);transform: rotate(0)}100%{-webkit-transform: rotate(360deg);transform: rotate(360deg)}}
+                                        </style>
+                                        <div aria-live="polite" role="status">
+                                            <div>Loading...</div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Authority & Certification -->
+    <section class="py-12 bg-light">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-dark mb-4">Dipercaya oleh Ribuan Pelanggan</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto mb-12">FashionStore.id adalah toko online terpercaya dengan sertifikasi internasional</p>
+            
+            <div class="flex flex-wrap justify-center gap-8 mb-12">
+                <div class="badge rounded-full px-6 py-3 flex items-center">
+                    <i class="fas fa-shield-alt text-white mr-2"></i>
+                    <span class="font-bold text-white">Sertifikasi ISO 9001</span>
+                </div>
+                <div class="badge rounded-full px-6 py-3 flex items-center">
+                    <i class="fas fa-recycle text-white mr-2"></i>
+                    <span class="font-bold text-white">Material Eco-Friendly</span>
+                </div>
+                <div class="badge rounded-full px-6 py-3 flex items-center">
+                    <i class="fas fa-truck text-white mr-2"></i>
+                    <span class="font-bold text-white">Gratis Ongkir Seluruh Indonesia</span>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="text-4xl font-bold text-primary">4.9/5</div>
+                    <p class="text-gray-600">Rating Pelanggan</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="text-4xl font-bold text-primary">1000+</div>
+                    <p class="text-gray-600">Pelanggan Puas</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="text-4xl font-bold text-primary">30 Hari</div>
+                    <p class="text-gray-600">Garansi Pengembalian</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="text-4xl font-bold text-primary">24 Jam</div>
+                    <p class="text-gray-600">Layanan Pelanggan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notification Popup -->
+    <div class="notification bg-white rounded-xl shadow-lg p-4 max-w-xs">
+        <div class="flex">
+            <div class="flex-shrink-0">
+                <i class="fas fa-bell text-primary text-xl"></i>
+            </div>
+            <div class="ml-3">
+                <h4 class="text-sm font-bold">Pesanan Baru!</h4>
+                <p class="text-xs text-gray-600">Siti dari Jakarta baru saja memesan 2 tas</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close text-white text-3xl absolute top-4 right-8 cursor-pointer" onclick="closeModal()">&times;</span>
+            <img id="modalImage" src="" alt="Full size image">
+        </div>
+    </div>
+
+    <script>
+        // Initialize Swiper for testimonials
+        new Swiper('.testimonials', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            autoplay: {
+                delay: 5000,
+            },
+        });
+        
+        // Countdown timer
+        function updateCountdown() {
+            const now = new Date();
+            const end = new Date(now);
+            end.setHours(23, 59, 59, 999);
+            
+            const diff = end - now;
+            
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            
+            document.getElementById('hours2').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes2').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds2').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Color selection
+        document.querySelectorAll('.color-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.color-option').forEach(o => o.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        
+        // Notification popup
+        setTimeout(() => {
+            const notification = document.querySelector('.notification');
+            notification.style.display = 'block';
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }, 3000);
+        
+        // Modal functions
+        function openModal(imageSrc) {
+            document.getElementById('modalImage').src = imageSrc;
+            document.getElementById('imageModal').style.display = 'flex';
+        }
+        
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+        
+        // Initialize OrderOnline Embed
+        if (typeof xLogError != 'function') {
+            var xLogError = function (error) {
+                var req = new XMLHttpRequest();
+                var payload = JSON.stringify({ url: document.location.href, line: error.line, stack: error.stack });
+                var params = 'message=' + encodeURIComponent(error.name) + '&payload=' + encodeURIComponent(payload) + '&type=embed&level=error';
+                req.open('POST', 'https://api.orderonline.id/log', true);
+                req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                req.send(params);
+            };
+        }
+        
+        try {
+            if (typeof xEmbedScript != 'function') {
+                var xEmbedScript = function () {
+                    !function(w, d, e, v, id, t, s) {
+                        if (d.getElementById(id)) return;
+                        t = d.createElement(e);
+                        t.async = !0;
+                        t.src = v;
+                        t.id = id;
+                        s = d.getElementsByTagName(e)[0];
+                        s.parentNode.insertBefore(t, s);
+                    }(window, document, 'script', 'https://cdn.orderonline.id/js/embed-v2-slim.min.js?v=8.0.4', 'oo-embed-js');
+                };
+            }
+            
+            if (typeof xEmbedInit != 'function') {
+                var xEmbedInit = function (w, n) {
+                    if (w.ooe) return;
+                    n = w.ooe = function() {
+                        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                    };
+                    if (!w._ooe) w._ooe = n;
+                    n.push = n;
+                    n.loaded = !0;
+                    n.version = '8.0.4';
+                    n.queue = [];
+                };
+            }
+            
+            xEmbedInit(window);
+            ooe('setup', 'redirect', 'https://elsa.orderonline.id');
+            ooe('init', '5f1a584d68e4c05c6f66c677', '68ac49d54cb9d65a52084cac', '68ac49d54cb9d65a52084cad', 'oo-embed-form-folding-eco-friendly-bag-8908', {"mode":"page","action":"Klik untuk pemesanan","title":"Form Pemesanan","triggerPixel":true,"triggerGtm":false});
+            
+            if (!window.jQuery) {
+                !function(w, d, e, v, id, t, s) {
+                    if (d.getElementById(id)) return;
+                    t = d.createElement(e);
+                    t.async = !0;
+                    t.src = v;
+                    t.id = id;
+                    t.addEventListener('load', xEmbedScript);
+                    s = d.getElementsByTagName(e)[0];
+                    s.parentNode.insertBefore(t, s);
+                }(window, document, 'script', 'https://cdn.orderonline.id/js/vendor/jquery.min.js', 'oo-embed-jquery');
+            } else {
+                xEmbedScript();
+            }
+        } catch (e) {
+            xLogError(e);
+            throw e;
+        }
+    </script>
+</body>
+</html>
